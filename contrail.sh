@@ -271,7 +271,12 @@ function download_dependencies {
         apt_get install python-setuptools
         apt_get install python-novaclient
         apt_get install curl
-        apt_get install chkconfig screen
+	if [[ "$DISTRO" != "trusty" ]]; then
+            apt_get install chkconfig
+        else
+            apt_get install sysv-rc-conf
+        fi
+        apt_get install screen
         apt_get install default-jdk javahelper
         apt_get install libcommons-codec-java libhttpcore-java liblog4j1.2-java
 	apt_get install python-software-properties
